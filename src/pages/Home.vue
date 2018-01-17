@@ -16,26 +16,25 @@
         </div>
       </div>
     </div>
-    <div class="container pt">
-      <div class="row mt centered">
-        <div class="col-lg-4 github-widget" v-for="repo in githubList" :data-repo="repo"></div>
-      </div>
-    </div>
+    <GithubRepo></GithubRepo>
   </div>
 </template>
 
 <script>
+  import GithubRepo from '@/components/GithubRepo'
+
   export default {
     name: 'Home',
-    created: function () {
-      this.$http.get('/api/php/project/getAll', {params: {accountName: 'callELPSYCONGROO', num: 1, size: 3}})
-        .then((res) => {
-
-        })
-        .catch((err) => {
-          alert(err)
-        })
-    }
+    data () {
+      return {
+        githubRepoParam: {
+          accountName: 'callELPSYCONGROO',
+          num: 1,
+          size: 3
+        }
+      }
+    },
+    components: {'GithubRepo': GithubRepo}
   }
 </script>
 
