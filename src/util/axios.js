@@ -9,6 +9,9 @@ axios.defaults.baseURL = 'http://127.0.0.1:9988'
 // 请求拦截器，发出请求之前处理
 axios.interceptors.request.use(
   config => {
+    // 转换JSON，否则会报错
+    config.data = JSON.stringify(config.data)
+    config.header = {'Content-Type': 'application/x-www-form-urlencoded'}
     config.params.timestamp = new Date().getTime()
     return config
   },
