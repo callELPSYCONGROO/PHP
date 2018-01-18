@@ -1,7 +1,7 @@
 <template>
   <div class="container pt">
     <div class="row mt centered">
-      <div class="col-lg-4 github-widget" v-for="repo in githubList" :data-repo="repo"></div>
+      <div class="col-lg-4 github-widget" v-for="repo in githubList" :data-repo="repo.accountName + '/' + repo.repoName"></div>
     </div>
   </div>
 </template>
@@ -15,24 +15,26 @@
       }
     },
     mounted: function () {
-      let self = this;
-      self.$http
-        .get(
-          '/api/php/project/getAll',
-          {
-            params: {
-              accountName: self.$parent.githubRepoParam.accountName,
-              num: self.$parent.githubRepoParam.num,
-              size: self.$parent.githubRepoParam.size
+      this.getRepoName();
+    },
+    methods: {
+      getRepoName: function () {
+        const self = this;
+        self.$http
+          .get(
+            '/api/php/project/getAll',
+            {
+              params: {
+                accountName: self.$parent.githubRepoParam.accountName,
+                num: self.$parent.githubRepoParam.num,
+                size: self.$parent.githubRepoParam.size
+              }
             }
-          }
-        )
-        .then(function (res) {
-          self.githubList = res.data;
-        })
-        .catch(function (err) {
-          alert('请求错误！')
-        })
+          )
+          .then(function (res) {
+            self.githubList = res.data.data;
+          })
+      }
     }
   }
 </script>

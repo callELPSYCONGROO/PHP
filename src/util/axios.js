@@ -23,11 +23,11 @@ axios.interceptors.request.use(
 // 响应拦截器，预处理响应数据
 axios.interceptors.response.use(
   res => {
-    if (!res) {
+    if (!res.data) {
       alert('res is empty')
     }
-    if (res.code !== 1000) {
-      alert(res.msg)
+    if (res.data.code !== 1000) {
+      alert(res.data.msg)
     }
     return res
   },
