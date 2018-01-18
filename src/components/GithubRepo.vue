@@ -35,6 +35,9 @@
             self.githubList = res.data.data;
           })
       }
+    },
+    updated: function () {
+      GithubRepoWidget.init();
     }
   }
 </script>
