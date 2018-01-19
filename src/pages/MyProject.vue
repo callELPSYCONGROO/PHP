@@ -5,7 +5,7 @@
         <h3>我的项目</h3>
         <hr>
         <p>我的开源项目都放在 <a href="https://github.com/callELPSYCONGROO" title="我的GitHub"
-                                               target="_blank"> <i class="fa fa-github"></i> GitHub </a>上面。</p>
+                        target="_blank"> <i class="fa fa-github"></i> GitHub </a>上面。</p>
         <p><a href="https://github.com/callELPSYCONGROO/aurora"><b>Auraro</b></a>&nbsp;这个项目是最近在做的Spring Cloud分布式系统。</p>
         <p>它从上到下由网关、API服务和基础服务组成。现在这个网站就是由它提供的接口。</p>
         <p>
@@ -15,41 +15,24 @@
         </p>
       </div>
     </div>
-    <div class="row mt centered">
-      <div class="col-lg-4">
-        <a class="zoom green" href="../components/project-detail.html"><img class="img-responsive" src="static/img/portfolio/port01.jpg" alt="" /></a>
-        <p>APE</p>
-      </div>
-      <div class="col-lg-4">
-        <a class="zoom green" href="../components/project-detail.html"><img class="img-responsive" src="static/img/portfolio/port02.jpg" alt="" /></a>
-        <p>RAIDERS</p>
-      </div>
-      <div class="col-lg-4">
-        <a class="zoom green" href="../components/project-detail.html"><img class="img-responsive" src="static/img/portfolio/port03.jpg" alt="" /></a>
-        <p>VIKINGS</p>
-      </div>
-    </div><!-- /row -->
-    <div class="row mt centered">
-      <div class="col-lg-4">
-        <a class="zoom green" href="../components/project-detail.html"><img class="img-responsive" src="static/img/portfolio/port04.jpg" alt="" /></a>
-        <p>YODA</p>
-      </div>
-      <div class="col-lg-4">
-        <a class="zoom green" href="../components/project-detail.html"><img class="img-responsive" src="static/img/portfolio/port05.jpg" alt="" /></a>
-        <p>EMPERORS</p>
-      </div>
-      <div class="col-lg-4">
-        <a class="zoom green" href="../components/project-detail.html"><img class="img-responsive" src="static/img/portfolio/port06.jpg" alt="" /></a>
-        <p>CHIEFS</p>
-      </div>
-    </div>
+    <GithubRepo></GithubRepo>
   </div>
 </template>
 
 <script>
-    export default {
-        name: 'MyProject'
-    }
+  import GithubRepo from '@/components/GithubRepo'
+
+  export default {
+    name: 'MyProject',
+    data() {
+      return {
+        githubRepoParam: {
+          accountName: 'callELPSYCONGROO'
+        }
+      }
+    },
+    components: {'GithubRepo': GithubRepo}
+  }
 </script>
 
 <style scoped>
