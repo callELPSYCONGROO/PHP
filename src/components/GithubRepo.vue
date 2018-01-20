@@ -1,9 +1,8 @@
 <template>
   <div class="container pt1">
-    <div class="row mt1 centered" v-for="(index, repo) in githubList" v-if="index < 3" :key="repo.ppId">
-      <div class="col-lg-4 ct1 github-widget" :data-repo="repo.accountName + '/' + repo.repoName"></div>
+    <div class="row mt1 centered">
+      <div class="col-lg-4 ct1 github-widget" v-for="repo in githubList" :data-repo="repo.accountName + '/' + repo.repoName"></div>
     </div>
-    <div class="row mt1 centered" v-else></div>
   </div>
 </template>
 
