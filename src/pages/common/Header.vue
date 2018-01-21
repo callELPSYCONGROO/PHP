@@ -25,7 +25,8 @@
     name: "Header",
     methods: {
       blogTips: function () {
-        alert('博客页面未开放，敬请期待...')
+        console.log(this.gv.alert())
+        this.$alert('博客页面未开放，敬请期待...')
       }
     }
   }
