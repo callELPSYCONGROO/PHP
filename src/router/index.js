@@ -13,6 +13,11 @@ export default new Router({
       component: Home
     },
     {
+      path: '/Home',
+      name: 'Home',
+      component: Home
+    },
+    {
       path: '/MyProject',
       name: 'MyProject',
       component: MyProject
