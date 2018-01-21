@@ -1,5 +1,5 @@
 <template>
-<div id="app" class="home-bg-color">
+<div class="home-bg-color">
   <div>
     <div class="container">
       <div class="row">

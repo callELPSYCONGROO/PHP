@@ -1,9 +1,9 @@
 <template>
   <div class="project-bg-color">
-    <div class="container pt">
-      <div class="row mt">
+    <div class="container pt1">
+      <div class="row mt1">
         <div class="col-lg-6 col-lg-offset-3 centered">
-          <h3>我的项目</h3>
+          <h1>我的项目</h1>
           <hr>
           <p>我的开源项目都放在 <a href="https://github.com/callELPSYCONGROO" title="我的GitHub"
                           target="_blank"> <i class="fa fa-github"></i> GitHub </a>上面。</p>
@@ -18,7 +18,7 @@
       </div>
     </div>
     <div class="centered">
-      <h4>Github项目：</h4>
+      <h3>Github 项目源</h3>
     </div>
     <GithubRepo></GithubRepo>
   </div>

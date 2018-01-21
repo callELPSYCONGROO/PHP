@@ -137,6 +137,21 @@ a:after {
 	padding-bottom: 50px;
 }
 
+.mt1 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+.pt1 {
+padding-top: 10px;
+padding-bottom: 10px;
+}
+
+.ct1 {
+padding-top: 10px;
+padding-bottom: 10px;
+}
+
 
 /* +++++ WRAP SECTIONS +++++ */
 

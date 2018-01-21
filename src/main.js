@@ -6,7 +6,7 @@ import axios from './util/axios'
 import VueLazyLoad from 'vue-lazyload'
 
 // 懒加载的默认图片
-import defLazyImg from './assets/img/loading.gif'
+import defLazyImg from './assets/img/loader.gif'
 
 // 使用懒加载组件
 Vue.use(VueLazyLoad, {

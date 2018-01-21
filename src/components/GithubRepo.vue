@@ -1,7 +1,7 @@
 <template>
   <div class="container pt1">
     <div class="row mt1 centered">
-      <div class="col-lg-4 ct1 github-widget" v-for="repo in githubList" :data-repo="repo.accountName + '/' + repo.repoName"></div>
+      <div class="ct1 github-widget" v-for="repo in githubList" :data-repo="repo.accountName + '/' + repo.repoName"></div>
     </div>
   </div>
 </template>
@@ -43,18 +43,5 @@
 </script>
 
 <style scoped>
-  .mt1 {
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-
-  .pt1 {
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
-
-  .ct1 {
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
+  
 </style>
