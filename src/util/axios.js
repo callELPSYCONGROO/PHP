@@ -4,7 +4,8 @@ import axios from 'axios'
 // axios.js 配置
 axios.defaults.timeout = 5000
 // 根Url
-axios.defaults.baseURL = 'http://127.0.0.1:9988'
+axios.defaults.baseURL = 'http://api.wuhenjian.com'
+// axios.defaults.baseURL = 'http://127.0.0.1:9988'
 
 // 请求拦截器，发出请求之前处理
 axios.interceptors.request.use(
