@@ -185,19 +185,13 @@ padding-bottom: 10px;
 
 /* +++++ Color Wraps / Blog Page +++++ */
 
-#grey {
+.bg-grey {
   padding-top: 60px;
   padding-bottom: 60px;
   background-color: #f2f2f2;
 }
 
-#grey1 {
-  padding-top: 60px;
-  padding-bottom: 60px;
-  background-color: #f2f2f2;
-}
-
-#white {
+.bg-white {
 	padding-top: 60px;
 	padding-bottom: 60px;
 	background-color: #ffffff;
@@ -206,7 +200,7 @@ padding-bottom: 10px;
 
 
 /* Blog Date*/
-bd {
+.bd {
 	font-size: 12px;
 	text-transform: uppercase;
 	color: #d2d2d2;
@@ -214,7 +208,7 @@ bd {
 }
 
 /* Blog Author*/
-ba {
+.ba {
 	font-size: 12px;
 	text-transform: uppercase;
 }
@@ -226,7 +220,7 @@ ba {
 }
 
 /* Blog Tags */
-bt {
+.bt {
 	font-size: 12px;
 }
 
