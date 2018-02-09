@@ -44,16 +44,31 @@
       </div>
       </div>
     </div>
+
+    <div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+      <div class="mui-scroll">
+        <!--数据列表-->
+        <ul class="mui-table-view mui-table-view-chevron">
+        </ul>
+      </div>
+    </div>
+
   </div>
 </template>
 
 <script>
   export default {
     name: 'MyBlog',
+    data () {
+      return {
+        pageNum: 1,
+        pageSize: 10
+      }
+    },
     mounted: function () {
       mui.init({
         pullRefresh : {
-          container: refreshContainer,//待刷新区域标识，querySelector能定位的css选择器均可，比如：id、.class等
+          container: '#pullrefresh',//待刷新区域标识，querySelector能定位的css选择器均可，比如：id、.class等
           up: {
             height: 50,//可选.默认50.触发上拉加载拖动距离
             auto: true,//可选,默认false.自动上拉加载一次
@@ -67,7 +82,20 @@
     methods: {
       // 上拉刷新函数
       upFreshFunc: function () {
-
+        const self = this;
+        self.$http
+            .get('/api/php/blog/getBlogList', {num: self.$data.pageNum, size: self.$data.pageSize})
+            .then(res => {
+              var list = res.data.data;
+              var table = document.body.querySelector('.mui-table-view');
+              var cells = document.body.querySelectorAll('.mui-table-view-cell');
+              for (item : list) {
+                var li = document.createElement('li');
+                li.className = 'mui-table-view-cell';
+                
+              }
+              self.$data.pageSize += 1;
+            });
       }
     }
   }
