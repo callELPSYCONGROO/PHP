@@ -8,6 +8,9 @@
         <a href="https://weibo.com/314268372" title="我的新浪微博" target="_blank"><i class="fa fa-weibo fa-2x"></i></a>
       </p>
       <span><router-link to="/Home"><i class="fa fa-home"></i>&nbsp;首页</router-link></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="#"><i class="fa fa-chevron-up"></i>&nbsp;顶部</a></span>
+      <br>
+      <br>
+      <span><a href="http://www.miitbeian.gov.cn/">备案号：蜀ICP备18003871号-2</a></span>
     </div>
   </div>
 </div>

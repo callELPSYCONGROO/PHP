@@ -89,10 +89,13 @@
               var list = res.data.data;
               var table = document.body.querySelector('.mui-table-view');
               var cells = document.body.querySelectorAll('.mui-table-view-cell');
-              for (item : list) {
+              if (!list || list.length <= 0) {
+
+                return;
+              }
+              for (var i = 0; i < list.length; i++) {
                 var li = document.createElement('li');
                 li.className = 'mui-table-view-cell';
-                
               }
               self.$data.pageSize += 1;
             });
