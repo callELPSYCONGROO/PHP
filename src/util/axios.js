@@ -17,7 +17,7 @@ axios.interceptors.request.use(
     return config
   },
   err => {
-    console.log(err)
+    mui.toast('请求异常，请刷新重试')
     return Promise.reject(err)
   }
 )
@@ -26,15 +26,15 @@ axios.interceptors.request.use(
 axios.interceptors.response.use(
   res => {
     if (!res.data) {
-      alert('res is empty')
+      mui.toast('响应结果为空，请刷新重试')
     }
     if (res.data.code !== 1000) {
-      alert(res.data.msg)
+      mui.toast(res.data.msg)
     }
     return res
   },
   err => {
-    console.log(err)
+    mui.toast('服务器响应异常，请刷新重试')
     return Promise.reject(err)
   }
 )
