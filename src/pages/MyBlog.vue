@@ -1,55 +1,75 @@
 <template>
-  <div class="project-bg-color">
-
-    <div id="grey">
-      <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-lg-offset-2">
-          <p><img src="/static/img/user.png" width="50px" height="50px"> <ba>Stanley Stinson</ba></p>
-          <p><bd>January 18, 2014</bd></p>
-          <h4>The Amazing Spiderman</h4>
-          <p><b>Spider-Man</b> is a fictional character, a comic book superhero that appears in comic books published by Marvel Comics. Created by writer-editor Stan Lee and writer-artist Steve Ditko, he first appeared in Amazing Fantasy #15 (cover-dated Aug. 1962). </p>
-          <p>Lee and Ditko conceived the character as an orphan being raised by his Aunt May and Uncle Ben, and as a teenager, having to deal with the normal struggles of adolescence in addition to those of a costumed crimefighter.</p>
-          <p><a href="/#/MyBlogDetail">Continue Reading...</a></p>
-        </div>
+  <div id="blogListId" class="project-bg-color">
+    <div v-for="(blog, index) in blogList">
+      <div class="bg-grey" v-if="index % 2 == 0">
+        <BlogItem v-bind:blog=blog></BlogItem>
       </div>
-      </div>
-    </div>
-
-    <div id="white">
-      <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-lg-offset-2">
-          <p><img src="/static/img/user.png" width="50px" height="50px"> <ba>Stanley Stinson</ba></p>
-          <p><bd>January 3, 2014</bd></p>
-          <h4>An Image Post</h4>
-          <p><img class="img-responsive" src="/static/img/blog01.jpg" alt=""></p>
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-          <p><a href="/#/MyBlogDetail">Continue Reading...</a></p>
-        </div>
-      </div>
-      </div>
-    </div>
-  
-    <div id="grey">
-      <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-lg-offset-2">
-          <p><img src="/static/img/user.png" width="50px" height="50px"> <ba>Stanley Stinson</ba></p>
-          <p><bd>January 01, 2014</bd></p>
-          <h4>Believe In Yourself</h4>
-          <p class="bq">"A bird sitting on a tree is never afraid of the branch breaking, because her trust is not in the branch, but in her own wings."</p>
-          <p><a href="/#/MyBlogDetail">Continue Reading...</a></p>
-        </div>
-      </div>
+      <div class="bg-white" v-else>
+        <BlogItem v-bind:blog=blog></BlogItem>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+  import BlogItem from '@/components/BlogItem'
+
   export default {
-    name: 'MyBlog'
+    name: 'MyBlog',
+    data () {
+      return {
+        flag: true,// 返回数据为空之后就不再查询了
+        scrollFlag: true,// 解决下滑的时候，滑动幅度太大，执行过多次handlerScroll方法
+        pageNum: 1,
+        pageSize: 10,
+        blogList: []
+      }
+    },
+    mounted: function () {
+      window.addEventListener('scroll', this.handlerScroll);
+      this.getBlogList();
+    },
+    methods: {
+      getBlogList: function () {
+        const self = this;
+        if (!self.$data.flag) {
+          return;
+        }
+        self.$data.flag = false;
+        self.$http
+            .get('/api/php/blog/getBlogList', {params: {num: self.$data.pageNum, size: self.$data.pageSize}})
+            .then(function (res) {
+              var list = res.data.data;
+              if (!list || list.length == 0) {
+                self.$data.flag = false;
+                self.$data.scrollFlag = false;
+                return;
+              } else {
+                self.$data.flag = true;
+                self.$data.scrollFlag = true;
+              }
+              for (var i = 0; i < list.length; i++) {
+                self.$data.blogList.push(list[i]);
+              }
+            });
+      },
+      handlerScroll: function () {
+        if (!this.$data.scrollFlag) {
+          return;
+        }
+        let scrollHeight = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+        let eleHeight = document.getElementById('blogListId').clientHeight;
+        let changeHeight = eleHeight * 4 / 5;
+        if (scrollHeight > changeHeight) {
+          this.$data.scrollFlag = false;
+          this.$data.pageNum = 1 + this.$data.pageNum;
+          this.getBlogList();
+        }
+      }
+    },
+    components: {
+      'BlogItem': BlogItem
+    }
   }
 </script>
 

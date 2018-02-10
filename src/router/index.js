@@ -24,16 +24,16 @@ export default new Router({
       name: 'MyProject',
       component: MyProject
     },
-    // {
-    //   path: '/MyBlog',
-    //   name: 'MyBlog',
-    //   component: MyBlog
-    // },
-    // {
-    //   path: '/MyBlogDetail',
-    //   name: 'MyBlogDetail',
-    //   component: MyBlogDetail
-    // },
+    {
+      path: '/MyBlog',
+      name: 'MyBlog',
+      component: MyBlog
+    },
+    {
+      path: '/MyBlogDetail',
+      name: 'MyBlogDetail',
+      component: MyBlogDetail
+    },
     {
       path: '/ABoutMe',
       name: 'ABoutMe',
