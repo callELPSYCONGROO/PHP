@@ -6,17 +6,18 @@
           <div class="col-lg-8 col-lg-offset-2">
             <h3>{{blog.title}}</h3>
             <p><span class="bd">{{blog.createdAt | formatDate}}</span></p>
-            <p><img class="img-responsive" src="static/img/blog01.jpg" alt=""></p>
-            <p v-if="blog.content != null" v-html="blog.content"></p>
-            <p v-else class="bg-grey">
-              {{blog.description}}
-              <hr>
-              <span><i class="fa fa-spinner fa-spin"></i>&nbsp;文章内容无法加载，请点击下方查看原文</span>
-            </p>
+            <div v-if="blog.content"><p v-html="blog.content"></p></div>
+            <div v-else>
+              <p class="bg-grey">
+                {{blog.description}}
+                <hr>
+                <span><i class="fa fa-spinner fa-spin"></i>&nbsp;文章内容无法加载，请点击下方查看原文</span>
+              </p>
+            </div>
             <br>
-            <p v-if="blog.tags != null"><span class="bt"><i class="fa fa-tags"></i>&nbsp;<a href="#">{{blog.tags}}</a></span></p>
+            <p v-if="blog.tags != null"><span class="bt"><i class="fa fa-tags"></i>&nbsp;<a>{{blog.tags}}</a></span></p>
             <hr>
-            <p><router-link to="/MyBlog"><i class="fa fa-link"></i>&nbsp;查看原文</router-link></p>
+            <p><a :href="blog.originalUrl"><i class="fa fa-link"></i>&nbsp;查看原文</a></p>
           </div>
         </div>
       </div>
