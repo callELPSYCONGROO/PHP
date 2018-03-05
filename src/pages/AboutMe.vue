@@ -5,7 +5,7 @@
             <div class="col-lg-6 col-lg-offset-3 centered">
                 <h1>关于</h1>
                 <p>
-                    现在是我的个人主页第一版（v1.0.2），如果访问发现问题，欢迎联系我！
+                    现在是我的个人主页&nbsp;<i class="fa fa-tag">&nbsp;v1.0.2&nbsp;</i>，如果访问发现问题，欢迎联系我！
                 </p>
                 <hr>
                 <h3>前端</h3>
